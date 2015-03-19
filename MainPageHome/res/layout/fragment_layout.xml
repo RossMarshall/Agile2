@@ -39,6 +39,12 @@
         style="@style/DashboardButton"
         android:drawableTop="@drawable/compfun"
         android:text="Computer\nFundamentals" />
+    
+    <Button
+        android:id="@+id/btn_psychometric"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/interview"
+        android:text="Psychometric \nTest"></Button>
 
     <!-- Events Button -->
 

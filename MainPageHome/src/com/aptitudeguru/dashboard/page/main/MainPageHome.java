@@ -13,6 +13,7 @@ import com.aptitudeguru.dashboard.ComputerFundamentals;
 import com.aptitudeguru.dashboard.Language;
 import com.aptitudeguru.dashboard.Puzzles;
 import com.aptitudeguru.dashboard.lib.DatabaseHandler;
+import com.aptitudeguru.dashboard.page.test.Psychometric;
 import com.aptitudeguru.dashboard.page.test.TestChooiceQuantitative;
 import com.aptitudeguru.dashboard.page.test.TestChooiceVerbal;
 
@@ -32,27 +33,22 @@ import androidhive.dashboard.R;
 public class MainPageHome extends MainPage_Base {
 	
 	private static final String DATABASE_NAME = "aptitudedatabase";
-
+	
 	
 	final Context context = this;
 	
-	//Changes the table loaded for quants based on device locale
-	//returned int is for testing purposes only
-	public static int getLocale(int test){
-		String locale = Locale.getDefault().toString();
-		if(locale.equals("en-gb")){
+	//Changes the database table loaded for quants based on device locale
+	public static void getLocale(){
+		Locale currentLocale = Locale.getDefault();		
+		if(currentLocale.equals(Locale.UK)){
 		DatabaseHandler.TABLE_QUANTS = "quantsUK";
-		test = 1;
 		}
-		if(locale.equals("en-us")){
+		if(currentLocale.equals(Locale.US)){
 			DatabaseHandler.TABLE_QUANTS = "quantsUS";
-			test = 2;
 		}
-		if(locale.equals("fr-fr")){
+		if(currentLocale.equals(Locale.FRANCE)){
 			DatabaseHandler.TABLE_QUANTS = "quantsFR";
-			test = 3;
-		}
-		return test;		
+		}	
 	}
 
 	private static void copydb(InputStream inputstream, OutputStream outputStream) throws IOException {
@@ -103,7 +99,7 @@ public class MainPageHome extends MainPage_Base {
 		super.onCreate(savedInstanceState, R.layout.dashboard_layout);
 		super.btn_home.setOnClickListener(null);
 		new DatabaseHandler(this);
-		getLocale(1);
+		getLocale();
 		
 		try {
 			String datapath = "/data/data/" + getPackageName() + "/databases";
@@ -123,6 +119,7 @@ public class MainPageHome extends MainPage_Base {
 		Button btn_compfun = (Button) findViewById(R.id.btn_compfun);
 		Button btn_puzzles = (Button) findViewById(R.id.btn_puzzles);
 		Button btn_allinone = (Button) findViewById(R.id.btn_allinone);
+		Button btn_psychometric = (Button) findViewById(R.id.btn_psychometric);
 
 		btn_quants.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -176,6 +173,13 @@ public class MainPageHome extends MainPage_Base {
 			}
 		});
 
+		btn_psychometric.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent i = new Intent(getApplicationContext(), Psychometric.class);
+				startActivity(i);
+			}
+		});
 		//
 		// db.addClanguage(new
 		// CTable("Which of the following is the correct order of evaluation for the below expression?z = x + y * z / 4 % 2 - 1","c3","* / % + - =","	= * / % + -","	/ * % - + =	D.	* % / - + =","A"));

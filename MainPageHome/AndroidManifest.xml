@@ -397,7 +397,11 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Dialog" >
         </activity>
-        
+        <activity
+            android:name="com.aptitudeguru.dashboard.page.test.Psychometric"
+            android:label="Psychometric"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
     
 </manifest>
