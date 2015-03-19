@@ -1,0 +1,21 @@
+package com.aptitudeguru.dashboard.model;
+
+import junit.framework.TestCase;
+
+import org.junit.Test;
+
+public class ModelPsychometricTest extends TestCase {
+
+	public ModelPsychometricTest() {
+	}
+
+	@Test
+	public void test() {
+		assertEquals(ModelPsychometric.getScenario(),("You are a Retail Assistant working in the Saldringham branch of More Than Pens plc, a national stationer's chain. More Than Pens has over 1000 stores, primarily in the UK, including 451 travel outlets at airports, train stations and motorway service areas and 627 high street stores. More Than Pens sells a wide range of newspapers, magazines, books, stationery and impulse products; most branches are open 7 days a week between 8.30am and 5.30pm. As a Retail Assistant you are responsible for providing exceptional customer service whilst demonstrating product knowledge to maximise sales. You work primarily in the book section of the Saldringham branch, however all the branch staff work as a unified team and therefore you are often required to work in other sections throughout the store.A customer has been browsing in your section for about 10 minutes and is looking increasingly dissatisfied and frustrated. He approaches you and asks whether you have a particular book that he is looking for, and after checking on your computer, you have to inform him that it is currently 'out of stock'."));
+		assertEquals(ModelPsychometric.getAnswerA(),("A: Apologise that the book is unavailable and suggest he try Morethanpens.co.uk or another online retailer instead."));
+		assertEquals(ModelPsychometric.getAnswerB(),("B: Offer to order the book for the customer and let him know how long this will take. Offer to call him when the book arrives."));
+		assertEquals(ModelPsychometric.getAnswerC(),("C: Give the customer the ISBN (book serial number) of the book so that he can easily and quickly search it out elsewhere, either online or at another bookshop."));
+		assertEquals(ModelPsychometric.getAnswerD(),("D: Suggest he try the Alpston branch of More Than Pens (which is the nearest neighbouring town, 40 minutes drive away) or other bookshops in Saldringham."));
+	}
+
+}
